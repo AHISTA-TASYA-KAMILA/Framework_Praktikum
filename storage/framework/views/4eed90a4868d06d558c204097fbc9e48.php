@@ -31,6 +31,12 @@
                     Export to Excel
                 </button>
             </a>
+            <a href="<?php echo e(route('product-export-pdf')); ?>">
+                <button
+                    class="px-6 py-4 text-white bg-green-500 border border-green-500 rounded-lg shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    Export to PDF
+                </button>
+            </a>
             <div class="flex mt-4">
                 <form method="GET" action="<?php echo e(route('product-index')); ?>" class="mb-4 flex items-center">
                     <input type="text" name="search" value="<?php echo e(request('search')); ?>" placeholder="Cari produk..." class=" rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-500">
@@ -117,10 +123,6 @@
 
                 </tbody>
             </table>
-            <div class="mt-4">
-                <?php echo e($data->appends(['search' => request('search')])->links()); ?>
-
-            </div>
         </div>
     </div>
 

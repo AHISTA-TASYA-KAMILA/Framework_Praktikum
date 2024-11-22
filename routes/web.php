@@ -27,6 +27,7 @@ Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('prod
 Route::put('product/{id}', [ProductController::class, 'update'])->name('product-update');
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product-delete');
 Route::get('/product/export/excel', [ProductController::class, 'exportExcel'])->name('product-export-excel');
+Route::get('/product/export/pdf', [ProductController::class, 'generatePDF'])->name('product-export-pdf');
 
 Route::get('/product/create', [ProductController::class, 'create'])->name("product-create");
 Route::post('/product', [ProductController::class, 'store'])->name("product-store");

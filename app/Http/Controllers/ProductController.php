@@ -6,6 +6,7 @@ use App\Exports\ProductsExport;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,7 @@ class ProductController extends Controller
         }
         //mengambil data dari database melalui model product,
         //fungsi all() sama seperti SELECT * FROM
-        $data = $query->paginate(2);
+        $data = $query->get();
 
         return view("master-data.product-master.index-product", compact('data'));
     }
@@ -116,5 +117,16 @@ class ProductController extends Controller
     public function exportExcel()
     {
         return Excel::download(new ProductsExport, 'product.xlsx');
+    }
+
+    public function generatePdf()
+    {
+        $data = Product::all(); // Semua data diambil
+        $isPDF = true; // Menandakan mode PDF
+
+        $pdf = PDF::loadView('master-data.product-master.pdf-products', compact('data', 'isPDF'))
+            ->setPaper('a4', 'portrait'); // Atur ukuran dan orientasi kertas
+
+        return $pdf->download('product-export.pdf');
     }
 }
