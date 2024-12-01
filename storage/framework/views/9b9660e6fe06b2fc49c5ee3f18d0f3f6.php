@@ -48,12 +48,12 @@
                             <div class="form-group">
                                 <label for="product_name" class="block 
 text-sm font-medium text-gray-700">Product Name</label>
-                                <input type="text" id="product_name" name="product_name" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                <input type="text" id="product_name" name="product_name" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-greem-500 sm:text-sm" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="unit" class="block text-sm font-medium text-gray-700">Unit</label>
-                                <select id="unit" name="unit" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                <select id="unit" name="unit" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-green-500 sm:text-sm" required>
                                     <option value="" disabled selected>Select a unit</option>
                                     <option value="kg">Kilogram (kg)</option>
                                     <option value="ltr">Liter (ltr)</option>
@@ -64,26 +64,36 @@ text-sm font-medium text-gray-700">Product Name</label>
 
                             <div class="form-group">
                                 <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
-                                <input type="text" id="type" name="type" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                <input type="text" id="type" name="type" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="information" class="block text-sm font-medium text-gray-700">Information</label>
                                 <textarea id="information"
-                                    name="information" rows="3" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                                    name="information" rows="3" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="qty" class="block text-sm font-medium text-gray-700">Quantity</label>
-                                <input type="number" id="qty" name="qty" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                <input type="number" id="qty" name="qty" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="producer" class="block text-sm font-medium text-gray-700">Producer</label>
-                                <input type="text" id="producer" name="producer" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                                <input type="text" id="producer" name="producer" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" required>
                             </div>
 
-                            <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+                            <div class="form-group">
+                                <label for="supplier" class="block text-sm font-medium text-gray-700">supplier</label>
+                                <select id="supplier" name="supplier" class="block w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" required>
+                                    <option value="" disable selected>Select a supplier</option>
+                                    <?php $__currentLoopData = $suppliers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as supplier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($supplier->id); ?>"><?php echo e($supplier->supplier_name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
                         </form>
                     </div>
 

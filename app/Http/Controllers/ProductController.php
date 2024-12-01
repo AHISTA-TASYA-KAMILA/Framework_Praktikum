@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Exports\ProductsExport;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Symfony\Component\Routing\Tests\Matcher\CompiledUrlMatcherTest;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $query = product::query();
+        $query = product::with('supplier');
 
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
@@ -35,7 +37,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("master-data.product-master.create-product");
+        $suppliers = Supplier::all();
+        return view("master-data.product-master.
+        create-product", compact('suppliers'));
     }
 
     /**
@@ -50,6 +54,7 @@ class ProductController extends Controller
             'information' => 'nullable|string',
             'qty' => 'required|integer',
             'producer' => 'required|string|max:255',
+            'supplier_id' => 'required|exists:suppliers,id',
         ]);
 
         $product = Product::create($validasi_data);
